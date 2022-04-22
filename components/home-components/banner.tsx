@@ -8,35 +8,34 @@ export default function Banner({ data }: HomePageType) {
   return (
     <div className="wrapper overflow-hidden">
       <WrapperLarge>
-
         <div className="hidden 2xl:block max-h-full max-w-full">
           <img
             src="/icons/Rectangle-1.png"
-            style={{left: '165px', top: '0px'}}
+            style={{ left: '165px', top: '0px' }}
           />
           <img
             src="/icons/Rectangle-2.png"
-            style={{left: '637px', top: '-190px'}}
+            style={{ left: '637px', top: '-190px' }}
           />
           <img
             src="/icons/Rectangle-3.png"
-            style={{left: '1398px', top: '87px'}}
+            style={{ left: '1398px', top: '87px' }}
           />
           <img
             src="/icons/Rectangle-4.png"
-            style={{left: '1627px', top: '259px'}}
+            style={{ left: '1627px', top: '259px' }}
           />
           <img
             src="/icons/Rectangle-5.png"
-            style={{left: '1262px', top: '540px'}}
+            style={{ left: '1262px', top: '540px' }}
           />
           <img
             src="/icons/Rectangle-6.png"
-            style={{left: '322px', top: '540px'}}
+            style={{ left: '322px', top: '540px' }}
           />
           <img
             src="/icons/Rectangle-7.png"
-            style={{left: '-43px', top: '300px'}}
+            style={{ left: '-43px', top: '300px' }}
           />
         </div>
 
@@ -50,7 +49,9 @@ export default function Banner({ data }: HomePageType) {
           </p>
 
           <Button
-            className={'text-2xl bg-icon-bg text-light font-bold px-6 py-2 rounded-full mt-8'}
+            className={
+              'text-2xl bg-icon-bg text-light font-bold px-6 py-2 rounded-full mt-8'
+            }
             type="button"
             text={data.homepage.getToKnowUsButton}
           />
@@ -58,26 +59,27 @@ export default function Banner({ data }: HomePageType) {
       </WrapperLarge>
 
       <style jsx>{`
-        div.wrapper 
-        {
+        div.wrapper {
           margin-top: -${themePreval.height.header};
           padding-top: ${themePreval.height.header};
           position: relative;
         }
 
-        div.background
-        {
+        div.background {
           position: absolute;
           z-index: -1;
           inset: 0;
-          background: linear-gradient(109.17deg, white, rgb(203, 180, 229) 98.95%);
+          background: linear-gradient(
+            109.17deg,
+            white,
+            rgb(203, 180, 229) 98.95%
+          );
         }
 
-        img
-        {
+        img {
           width: 315px;
           height: 380px;
-          position: absolute; 
+          position: absolute;
           border-radius: 8px;
         }
       `}</style>

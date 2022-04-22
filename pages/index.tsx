@@ -16,10 +16,12 @@ export async function getStaticProps({ locale }: NextPageContext) {
 }
 
 export default function Home({ data }: HomePageType) {
-  return (<>
-    <Banner data={data} />
-    <AboutTheClinic data={data} />
-    <WhatWeDo data={data} />
-    <ContactUs data={data} />
-  </>)
+  return (
+    <>
+      <Banner data={data} />
+      <AboutTheClinic data={data} />
+      <WhatWeDo data={data} />
+      <ContactUs data={data} />
+    </>
+  )
 }

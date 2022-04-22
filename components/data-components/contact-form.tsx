@@ -6,18 +6,18 @@ import { Button } from './button'
 import Input from './input-component'
 
 export default function ContactForm({ data }: HomePageType) {
-  
-  const [fill, setFill] = useState(false);
-  
-  const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-  
+  const [fill, setFill] = useState(false)
+
+  const phoneRegExp =
+    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+
   const formik = useFormik({
     initialValues: {
       firstName: '',
       lastName: '',
       email: '',
       tel: '',
-      text: ''
+      text: '',
     },
     validationSchema: Yup.object({
       firstName: Yup.string()
@@ -28,26 +28,22 @@ export default function ContactForm({ data }: HomePageType) {
         .min(2, 'Must be 2 characters or more')
         .required('Required field'),
 
-      email: Yup.string()
-        .email('Invalid Email')
-        .required('Required field'),
+      email: Yup.string().email('Invalid Email').required('Required field'),
 
       tel: Yup.string()
         .matches(phoneRegExp, 'Invalid Phone Number')
-        .required('Required field')
+        .required('Required field'),
     }),
-    onSubmit: () => 
-    {
+    onSubmit: () => {
       setFill(true)
-    }
-  });
+    },
+  })
 
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className='bg-light rounded-xl text-xl font-bold p-4 w-full max-w-[650px] xl:mt-[-200px]'
+      className="bg-light rounded-xl text-xl font-bold p-4 w-full max-w-[650px] xl:mt-[-200px]"
     >
-
       <div className="grid md:grid-cols-2 gap-5">
         <Input
           name="firstName"
@@ -80,27 +76,29 @@ export default function ContactForm({ data }: HomePageType) {
       </div>
 
       <div className="grid gap-3 pt-4">
-            
-      <p className="pt-8">{data.common.contactUsFormMessage}</p>
-        
-        <textarea 
+        <p className="pt-8">{data.common.contactUsFormMessage}</p>
+
+        <textarea
           className="h-[145px] rounded-xl px-2 shadow-4xl"
-          name='text'
+          name="text"
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
         />
       </div>
 
       <Button
-        className={'text-3xl font-bold bg-icon-bg text-light mt-4 mb-4 px-12 py-3 rounded-full'}
+        className={
+          'text-3xl font-bold bg-icon-bg text-light mt-4 mb-4 px-12 py-3 rounded-full'
+        }
         type="submit"
         text={data.common.contactUsFormSendButton}
       />
 
-      {fill==true ?
-        <div className="text-lg text-center text-light bg-success">form sent</div>
-        : null
-      }
+      {fill == true ? (
+        <div className="text-lg text-center text-light bg-success">
+          form sent
+        </div>
+      ) : null}
     </form>
   )
 }
