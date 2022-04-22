@@ -65,7 +65,8 @@ export default function Footer({ data }: CommonType) {
             <li>
               <a
                 href={`mailto:${data.contactUsLinks[3].linkValue}`}
-                target="_blank" rel="noreferrer"
+                target="_blank"
+                rel="noreferrer"
               >
                 <div className="flex gap-2 mb-1 -mr-1">
                   <img src={'/footer' + data.contactUsLinks[3].imagePath} />
@@ -77,7 +78,8 @@ export default function Footer({ data }: CommonType) {
             <li>
               <a
                 href={`https://www.google.co.il/maps/search/${data.contactUsLinks[2].linkValue}`}
-                target="_blank" rel="noreferrer"
+                target="_blank"
+                rel="noreferrer"
               >
                 <div className="flex gap-2 mb-1">
                   <img src={'/footer' + data.contactUsLinks[2].imagePath} />

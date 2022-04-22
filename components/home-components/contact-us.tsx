@@ -30,7 +30,8 @@ export default function ContactUs({ data }: HomePageType) {
                   {x.linkType === 'address' ? (
                     <a
                       href={`https://www.google.co.il/maps/search/${x.text}`}
-                      target="_blank" rel="noreferrer"
+                      target="_blank"
+                      rel="noreferrer"
                     >
                       <div className="flex gap-2">
                         <img src={x.imagePath} />
@@ -40,7 +41,11 @@ export default function ContactUs({ data }: HomePageType) {
                   ) : (
                     <>
                       {x.linkType === 'email' ? (
-                        <a href={`mailto:${x.text}`} target="_blank" rel="noreferrer">
+                        <a
+                          href={`mailto:${x.text}`}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
                           <div className="flex gap-2">
                             <img src={x.imagePath} />
                             <p className="self-center">{x.text}</p>
