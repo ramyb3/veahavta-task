@@ -11,5 +11,7 @@ export function WrapperLarge({
   children: React.ReactNode
   className?: string
 }) {
-  return <section className={`grid ${className}`}>{children}</section>
+  return (
+    <section className={`grid px-6 py-6 mx-auto xl:px-28 xl:py-16 ${className}`}>{children}</section>
+  )
 }
