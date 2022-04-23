@@ -77,7 +77,7 @@ export default function Footer({ data }: CommonType) {
 
             <li>
               <a
-                href={`https://www.google.co.il/maps/search/${data.contactUsLinks[2].linkValue}`}
+                href={`https://www.google.co.il/maps/search/${data.contactUsLinks[2].text}`}
                 target="_blank"
                 rel="noreferrer"
               >
