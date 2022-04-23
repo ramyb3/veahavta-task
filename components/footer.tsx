@@ -64,7 +64,7 @@ export default function Footer({ data }: CommonType) {
 
             <li>
               <a
-                href={`mailto:${data.contactUsLinks[3].linkValue}`}
+                href={`mailto:${data.contactUsLinks[3].text}`}
                 target="_blank"
                 rel="noreferrer"
               >
