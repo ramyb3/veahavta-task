@@ -11,11 +11,16 @@ export default function Layout({ children, pageProps }: any) {
   }
   return (
     <>
+      <head>
+        <title>מרפאת ואהבת</title>
+      </head>
+      
       <div className="app-wrapper" dir={dir}>
         <Header data={pageProps.data.common} />
         <Main>{children}</Main>
         <Footer data={pageProps.data.common} />
       </div>
+      
       <style jsx global>
         {`
           html {
