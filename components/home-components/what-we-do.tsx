@@ -11,20 +11,20 @@ export default function WhatWeDo({ data }: HomePageType) {
       <h2 className="text-7xl font-bold">{data.homepage.whatWeDoTitle}</h2>
 
       <div className="grid mt-10 xl:grid-cols-4 gap-5 md:grid-cols-2 gap-5">
-        {data.homepage.whatWeDoCards.map((x, index) => {
+        {data.homepage.whatWeDoCards.map((whatWeDoCard, index) => {
           return (
             <div
               key={index}
               className="rounded-3xl h-[480px] bg-light max-w-[338px] overflow-hidden"
             >
               <div className="grid place-items-center bg-contact-bg min-h-[241px]">
-                <img src={x.imagePath} />
+                <img src={whatWeDoCard.imagePath} />
               </div>
 
               <h2 className="text-3xl text-icon-bg font-bold py-4">
-                {x.title}
+                {whatWeDoCard.title}
               </h2>
-              <p className="text-xl">{x.text}</p>
+              <p className="text-xl">{whatWeDoCard.text}</p>
             </div>
           )
         })}

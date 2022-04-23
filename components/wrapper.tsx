@@ -13,7 +13,7 @@ export function WrapperLarge({
 }) {
   return (
     <section
-      className={`grid px-6 py-6 mx-auto xl:px-28 xl:py-16 ${className}`}
+      className={`grid px-2 py-6 mx-auto xl:px-28 xl:py-16 ${className}`}
     >
       {children}
     </section>

@@ -48,6 +48,7 @@ export default function ContactForm({ data }: HomePageType) {
         <Input
           name="firstName"
           text={data.common.contactUsFormFirstName}
+          type='text'
           formik={formik}
           touch={formik.touched.firstName}
           error={formik.errors.firstName}
@@ -55,6 +56,7 @@ export default function ContactForm({ data }: HomePageType) {
         <Input
           name="lastName"
           text={data.common.contactUsFormLastName}
+          type='text'
           formik={formik}
           touch={formik.touched.lastName}
           error={formik.errors.lastName}
@@ -62,6 +64,7 @@ export default function ContactForm({ data }: HomePageType) {
         <Input
           name="email"
           text={data.common.contactUsFormEmail}
+          type='email'
           formik={formik}
           touch={formik.touched.email}
           error={formik.errors.email}
@@ -69,6 +72,7 @@ export default function ContactForm({ data }: HomePageType) {
         <Input
           name="tel"
           text={data.common.contactUsFormPhone}
+          type='tel'
           formik={formik}
           touch={formik.touched.tel}
           error={formik.errors.tel}

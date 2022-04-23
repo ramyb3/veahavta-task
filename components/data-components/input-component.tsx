@@ -7,7 +7,7 @@ export default function Input({ name, ...props }: any) {
         <input
           className="rounded-2xl px-2 shadow-4xl min-w-[240px] min-h-[60px]"
           name={name}
-          type="text"
+          type={props.type}
           onBlur={props.formik.handleBlur}
           onChange={props.formik.handleChange}
         />

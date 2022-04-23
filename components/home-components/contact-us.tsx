@@ -24,38 +24,38 @@ export default function ContactUs({ data }: HomePageType) {
           </p>
 
           <ul className="grid gap-2.5 lg:grid-cols-auto-1fr grid-rows-auto-1fr">
-            {data.common.contactUsLinks.map((x, index) => {
+            {data.common.contactUsLinks.map((contactUsLink, index) => {
               return (
                 <li key={index}>
-                  {x.linkType === 'address' ? (
+                  {contactUsLink.linkType === 'address' ? (
                     <a
-                      href={`https://www.google.co.il/maps/search/${x.text}`}
+                      href={`https://www.google.co.il/maps/search/${contactUsLink.text}`}
                       target="_blank"
                       rel="noreferrer"
                     >
                       <div className="flex gap-2">
-                        <img src={x.imagePath} />
-                        <p className="self-center">{x.text}</p>
+                        <img src={contactUsLink.imagePath} />
+                        <p className="self-center">{contactUsLink.text}</p>
                       </div>
                     </a>
                   ) : (
                     <>
-                      {x.linkType === 'email' ? (
+                      {contactUsLink.linkType === 'email' ? (
                         <a
-                          href={`mailto:${x.text}`}
+                          href={`mailto:${contactUsLink.text}`}
                           target="_blank"
                           rel="noreferrer"
                         >
                           <div className="flex gap-2">
-                            <img src={x.imagePath} />
-                            <p className="self-center">{x.text}</p>
+                            <img src={contactUsLink.imagePath} />
+                            <p className="self-center">{contactUsLink.text}</p>
                           </div>
                         </a>
                       ) : (
-                        <a href={`tel:${x.linkValue}`}>
+                        <a href={`tel:${contactUsLink.linkValue}`}>
                           <div className="flex gap-2">
-                            <img src={x.imagePath} />
-                            <p className="self-center">{x.text}</p>
+                            <img src={contactUsLink.imagePath} />
+                            <p className="self-center">{contactUsLink.text}</p>
                           </div>
                         </a>
                       )}
