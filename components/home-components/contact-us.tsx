@@ -6,10 +6,7 @@ import ContactForm from '../data-components/contact-form'
 export default function ContactUs({ data }: HomePageType) {
   return (
     <section id="contact-us">
-      <div
-        id="contact-us"
-        className="hidden xl:block h-[150px] bg-brown-bg"
-      ></div>
+      <div className="hidden xl:block h-[150px] bg-brown-bg"></div>
 
       <WrapperLarge className="bg-contact-bg place-items-center xl:grid-cols-2 gap-6 lg:gap-8">
         <div className="grid grid-rows-auto-1fr gap-6">
