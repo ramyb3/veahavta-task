@@ -26,15 +26,15 @@ export default function Header({ data }: CommonType) {
 
           <div className="flex flex-cols-2 justify-between place-items-center">
             <ul className="hidden md:flex flex-cols-4 gap-8 text-2xl">
-              {data.appLinks.map((appLink, index) => {
-                return (
-                  <li key={index}>
+              {
+                data.appLinks.map((appLink, index) => {
+                  return <li key={index}>
                     <Link href={`/${appLink.relativeLink}`}>
                       <a>{appLink.text}</a>
                     </Link>
                   </li>
-                )
-              })}
+                })
+              }
             </ul>
 
             <ul className="flex flex-cols-2 gap-3 items-end">

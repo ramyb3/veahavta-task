@@ -13,9 +13,9 @@ export default function Input({ name, ...props }: any) {
         />
       </div>
 
-      {props.touch && props.error ? (
-        <p className="text-sm text-red pt-2">{props.error}</p>
-      ) : null}
+      {props.touch && props.error ? 
+        <p className="text-sm text-red pt-2">{props.error}</p> : null
+      }
     </div>
   )
 }
