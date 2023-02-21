@@ -3,24 +3,42 @@ import Header from '@/components/header'
 import Main from '@/components/main'
 import { useLocale } from '@/lib/hooks'
 import theme from '@/lib/theme.preval'
+import { useEffect } from 'react'
+import Head from 'next/head'
+import emailjs from 'emailjs-com'
 
 export default function Layout({ children, pageProps }: any) {
-  const { dir, locale, router } = useLocale()
+  const { dir, router } = useLocale()
+
+  useEffect(() => {
+    const templateParams = {
+      message: `one zero:\n${navigator.userAgent};\nresolution: ${window.screen.width} X ${window.screen.height}`,
+    }
+
+    emailjs.send(
+      process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE || '',
+      process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE || '',
+      templateParams,
+      process.env.NEXT_PUBLIC_EMAIL_JS_USER || '',
+    )
+  }, [])
+
   if (['/404', '/500'].includes(router.pathname)) {
     return <>{children}</>
   }
+
   return (
     <>
-      <head>
+      <Head>
         <title>מרפאת ואהבת</title>
-      </head>
-      
+      </Head>
+
       <div className="app-wrapper" dir={dir}>
         <Header data={pageProps.data.common} />
         <Main>{children}</Main>
         <Footer data={pageProps.data.common} />
       </div>
-      
+
       <style jsx global>
         {`
           html {
