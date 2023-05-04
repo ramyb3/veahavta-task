@@ -4,29 +4,41 @@ import Main from '@/components/main'
 import { useLocale } from '@/lib/hooks'
 import theme from '@/lib/theme.preval'
 import { useEffect } from 'react'
-import { useDeviceData } from 'react-device-detect'
 import Head from 'next/head'
 import emailjs from 'emailjs-com'
 
 export default function Layout({ children, pageProps }: any) {
   const { dir, router } = useLocale()
-  const userData = useDeviceData(navigator.userAgent)
 
   useEffect(() => {
-    const templateParams = {
-      message: `one zero:\n\n${JSON.stringify(
-        userData,
-        null,
-        2,
-      )}\n\nresolution: ${window.screen.width} X ${window.screen.height}`,
-    }
+    const getUserDeviceInfo= async()=> {
+      let response =""
 
-    emailjs.send(
+      try {
+      response = await (
+        await fetch(`https://api.apicagent.com/?ua=${navigator.userAgent}`)
+      ).json();
+      } catch(e){
+        console.error(e);
+      }
+
+      const templateParams = {
+        message: `one zero:\n\n${JSON.stringify(
+          response,
+          null,
+          2,
+        )}\n\nresolution: ${window.screen.width} X ${window.screen.height}`,
+      }
+      
+      emailjs.send(
       process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE || '',
       process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE || '',
       templateParams,
       process.env.NEXT_PUBLIC_EMAIL_JS_USER || '',
     )
+    }
+
+    getUserDeviceInfo()
   }, [])
 
   if (['/404', '/500'].includes(router.pathname)) {
