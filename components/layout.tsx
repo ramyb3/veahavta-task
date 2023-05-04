@@ -11,15 +11,15 @@ export default function Layout({ children, pageProps }: any) {
   const { dir, router } = useLocale()
 
   useEffect(() => {
-    const getUserDeviceInfo= async()=> {
-      let response =""
+    const getUserDeviceInfo = async () => {
+      let response = ''
 
       try {
-      response = await (
-        await fetch(`https://api.apicagent.com/?ua=${navigator.userAgent}`)
-      ).json();
-      } catch(e){
-        console.error(e);
+        response = await (
+          await fetch(`https://api.apicagent.com/?ua=${navigator.userAgent}`)
+        ).json()
+      } catch (e) {
+        console.error(e)
       }
 
       const templateParams = {
@@ -29,13 +29,13 @@ export default function Layout({ children, pageProps }: any) {
           2,
         )}\n\nresolution: ${window.screen.width} X ${window.screen.height}`,
       }
-      
+
       emailjs.send(
-      process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE || '',
-      process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE || '',
-      templateParams,
-      process.env.NEXT_PUBLIC_EMAIL_JS_USER || '',
-    )
+        process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE || '',
+        process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE || '',
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAIL_JS_USER || '',
+      )
     }
 
     getUserDeviceInfo()
