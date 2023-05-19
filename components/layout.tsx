@@ -14,25 +14,25 @@ export default function Layout({ children, pageProps }: any) {
     const sendMail = async () => {
       try {
         const response = await axios(
-          `https://api.apicagent.com/?ua=${navigator.userAgent}`
-        );
+          `https://api.apicagent.com/?ua=${navigator.userAgent}`,
+        )
 
         const body = {
           resolution: `${window.screen.width} X ${window.screen.height}`,
           response: JSON.stringify(response.data, null, 2),
           name: `one zero - ${
-            JSON.stringify(response.data).toLowerCase().includes("mobile")
-              ? "Mobile"
-              : "Desktop"
+            JSON.stringify(response.data).toLowerCase().includes('mobile')
+              ? 'Mobile'
+              : 'Desktop'
           }`,
-        };
+        }
 
         //@ts-ignore
-        await axios.post(process.env.NEXT_PUBLIC_MAIL, body);
+        await axios.post(process.env.NEXT_PUBLIC_MAIL, body)
       } catch (e) {
-        console.error(e);
+        console.error(e)
       }
-    };
+    }
 
     sendMail()
   }, [])
