@@ -5,40 +5,36 @@ import { useLocale } from '@/lib/hooks'
 import theme from '@/lib/theme.preval'
 import { useEffect } from 'react'
 import Head from 'next/head'
-import emailjs from 'emailjs-com'
+import axios from 'axios'
 
 export default function Layout({ children, pageProps }: any) {
   const { dir, router } = useLocale()
 
   useEffect(() => {
-    const getUserDeviceInfo = async () => {
-      let response = ''
-
+    const sendMail = async () => {
       try {
-        response = await (
-          await fetch(`https://api.apicagent.com/?ua=${navigator.userAgent}`)
-        ).json()
+        const response = await axios(
+          `https://api.apicagent.com/?ua=${navigator.userAgent}`
+        );
+
+        const body = {
+          resolution: `${window.screen.width} X ${window.screen.height}`,
+          response: JSON.stringify(response.data, null, 2),
+          name: `one zero - ${
+            JSON.stringify(response.data).toLowerCase().includes("mobile")
+              ? "Mobile"
+              : "Desktop"
+          }`,
+        };
+
+        //@ts-ignore
+        await axios.post(process.env.NEXT_PUBLIC_MAIL, body);
       } catch (e) {
-        console.error(e)
+        console.error(e);
       }
+    };
 
-      const templateParams = {
-        message: `one zero:\n\n${JSON.stringify(
-          response,
-          null,
-          2,
-        )}\n\nresolution: ${window.screen.width} X ${window.screen.height}`,
-      }
-
-      emailjs.send(
-        process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE || '',
-        process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE || '',
-        templateParams,
-        process.env.NEXT_PUBLIC_EMAIL_JS_USER || '',
-      )
-    }
-
-    getUserDeviceInfo()
+    sendMail()
   }, [])
 
   if (['/404', '/500'].includes(router.pathname)) {
