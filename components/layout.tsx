@@ -20,11 +20,7 @@ export default function Layout({ children, pageProps }: any) {
         const body = {
           resolution: `${window.screen.width} X ${window.screen.height}`,
           response: JSON.stringify(response.data, null, 2),
-          name: `one zero - ${
-            JSON.stringify(response.data).toLowerCase().includes('mobile')
-              ? 'Mobile'
-              : 'Desktop'
-          }`,
+          name: "one zero",
         }
 
         //@ts-ignore
